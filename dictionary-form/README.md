@@ -6,3 +6,5 @@ By running `python <x>` for each of these files:
 - favorite-title.py
 - count.py
 - neater-count.py
+- sorted-count-alphabetical.py
+- sorted-count.py
