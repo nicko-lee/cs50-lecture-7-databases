@@ -18,7 +18,7 @@ This lets us sort the results (same results as above query) in alphabetical orde
 
 Using GROUP BY will consolidate the entries in a column thus removing duplicates:
 
-    SELECT title FROM favorites GROUP BY title  ORDER BY title;
+    sqlite> SELECT title FROM favorites GROUP BY title  ORDER BY title;
 
 This gives us a count of the number of times each title appears. Note that COUNT(title) on its own returns just one integer:
 
@@ -36,3 +36,13 @@ With .schema, we can see how the format for the table for our data is created. I
         "title" TEXT,
         "genres" TEXT
     );
+
+We can even set the count of each title to a new variable, n, and order our results by that, in descending order. Here's how we see the top 10 results:
+
+    sqlite> SELECT title, COUNT(title) AS n FROM favorites GROUP BY title ORDER BY n DESC LIMIT 10;
+
+We can do some data cleansing using:
+
+    sqlite> UPDATE favorites SET title = "The Office" WHERE title LIKE "%office"
+
+That will set all the rows with the title containing “office” to be “The Office” so we can make them consistent.
